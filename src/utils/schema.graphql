@@ -1,0 +1,55 @@
+schema {
+  query: RootQueryType
+  mutation: MutationRoot
+}
+
+"""food item"""
+type food {
+  """The id of the food item."""
+  itemId: Int
+
+  """The name of the food."""
+  foodName: String
+
+  """The type of food. """
+  foodType: String
+}
+
+"""food item"""
+input foodinputitem {
+  """The name of the food."""
+  foodName: String
+
+  """The type of food. """
+  foodType: String
+}
+
+"""Mutation API"""
+type MutationRoot {
+  fooditemSave(inputItem: foodinputitem!): food
+  resturentmenuItemSave(inputItem: resturentmutation!): resturent
+}
+
+"""resturen menu item"""
+type resturent {
+  """The name of the resturent."""
+  resturentName: String
+
+  """The type of menu a resturent have. """
+  menuType: [String]
+}
+
+"""resturent menu items"""
+input resturentmutation {
+  """The name of the resturent."""
+  resturentName: String
+
+  """The type of menu a resturent have. """
+  menuType: [String]
+}
+
+type RootQueryType {
+  foodItem(itemId: ID!): [food]
+  foodItems: [food]
+  resturentCollection: [resturent]
+}
